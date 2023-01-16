@@ -1,0 +1,46 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="card shadow m-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 2px solid orange">View Queries Details</h5>
+     <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+
+		<table class="table table-bordered">
+		    <caption></caption>
+                                <tr align="center">
+                                    <td colspan="4" style="font-size : 20px; color : red"> View Queries Details</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <td>{{enquiry.FullName}}</td>
+
+                                    <th scope="col">Contact No.</th>
+                                    <td>{{enquiry.Contact}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">Email ID</th>
+                                    <td>{{enquiry.EmailId}}</td>
+
+                                    <th scope="col">Subject</th>
+                                    <td>{{enquiry.Subject}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">Enquiry Message</th>
+                                    <td colspan="3">{{enquiry.Description}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">Enquiry Date</th>
+                                    <td colspan="3">{{enquiry.PostingDate}}</td>
+                                </tr>
+                            </table>
+	    </div>
+	 </div>
+    </div>
+
+{% endblock content %}

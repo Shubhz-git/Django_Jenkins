@@ -1,0 +1,293 @@
+{% load static %}
+<!DOCTYPE> 
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>LAVE-AUTO DE LUXE</title>
+</head>
+
+
+
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>L</span>AVE - AUTO <span> D</span>E LUXE</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#services" data-after="Service">Services</a></li>
+            <li><a href="#Washing" data-after="Washing Points">Centres</a></li>
+            <li><a href="#projects" data-after="Feedback">Feedback</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+<li><a href="#Washing" data-after="Washing Points">SUPPORT</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+   
+
+    
+
+
+
+    
+  </section>
+  <!-- End Header -->
+
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+
+
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Service Section -->
+  
+ 
+  <section id="services">
+    
+    <div class="services container">
+     <div class="service-top">
+
+        
+        <h1 class="section-title">Serv<span>i</span>ces</h1>
+        
+      </div>
+      
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-settings-business-kiranshastry-gradient-kiranshastry.png" alt=""/></div>
+          <h2>ESSENTIAL CLEAN-UP (€80.59)</h2>
+          <p>To clean your car, you can either opt for a simple body and wheel clean, or you can choose to clean
+            both the interior and exterior of your car. Before you begin cleaning the exterior, make sure the body
+            of your car is cool and in the shade.</p>
+          <center><a href="{% url 'customerBook' %}" style="background-color : white; font-size: 25px;">Book Now</a></center>
+        </div>
+
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-settings-business-kiranshastry-gradient-kiranshastry.png" alt=""/></div>
+          <h2>FULL INTERIOR CLEAN-UP (€150.54)</h2>
+          <p>To clean the interior, remove the floor mats and throw away trash. Vacuum the interior and use a foam
+            cleanser to clean the carpet and upholstery. Finish cleaning your car by using a window cleaner to clean
+            the inside.</p>
+          <center><a href="{% url 'customerBook' %}" style="background-color : white; font-size: 25px;">Book Now</a></center>
+        </div>
+
+
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/64/000000/external-settings-business-kiranshastry-gradient-kiranshastry.png" alt=""/></div>
+          <h2>DEEP COMPLEX CLEAN-UP (€210.54)</h2>
+          <p>Gather your supplies to clean the interior as well. These supplies may include a vacuum, trash bag, glass cleaner,
+            upholstery foam cleanser, Q-tips, paper towels, and rags. Do not use dishwashing detergent or hand
+            soap to clean your car.</p>
+          <center><a href="{% url 'customerBook' %}" style="background-color : white; font-size: 25px;">Book Now</a></center>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- End Service Section -->
+
+  <!-- Washing Point -->
+  <section id="Washing">
+  <div class="location container">
+            <div class="container">
+
+
+                        <div class="section-header text-left">
+                          <h1 class="section-title">Cleaning  <span>Cen</span>ters</h1>
+                        
+                          <br><br>
+
+
+                       <div class="row">
+                          {% for i in washingpoints%} 
+                         <center> <div class="col-sm-6">
+                                <div class="location-item">
+                                    <em class="fa fa-map-marker-alt"></em>
+                                    <div class="location-text">
+                                      <h3>{{i.washingPointName}}</h3>
+                                      <p>{{i.washingPointAddress}}</p>
+                                      <p><strong>Call:</strong>{{i.contactNumber}}</p>
+                                    </div>
+                                </div>
+                          </div>
+                           </center>
+                          {% endfor %}
+                         </div>
+                </div>
+            </div>
+  </div>
+</section>
+  <!-- End Washing Section -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects container">
+      <div class="projects-header">
+        <h1 class="section-title">Valueable <span>Feedback</span></h1>
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Ratan Tata (Chairman Of Tata Group)</h1>
+            <h2>The gentlemen that were at the Hinckley… </h2>
+            <p>
+              The gentlemen that were at the Express Car Wash were very friendly and thorough with the car service I had purchased. I had the ultra HD wash + a mini car valet. Would recommend to a friend!</p>
+          </div>
+          <div class="project-img">
+            <img src="{% static 'images/img-1.png' %}" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Luca di Montezemolo (Former Chairman Of Ferrari)</h1>
+            <h2>Your Service are Very Helpful</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="{% static 'images/img1.1.jpg' %}" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Stefano Domenicali (CEO of Formula One Group) </h1>
+            <h2>Your Service very Useful</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="{% static 'images/img1.2.jpg' %}" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Mike Flewitt (CEO of McLaren Automotive)</h1>
+            <h2>Your service staff are very good</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="{% static 'images/img1.3.jpg' %}" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Stefan Johansson (Swedish Racer)</h1>
+            <h2>This service are lovely work with us</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="{% static 'images/img1.4.jpg' %}" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="{% static 'images/8.jpg' %}" alt="img">
+        </div>
+      </div>
+      <div class="col-right">
+        <h1 class="section-title">About <span>Us</span></h1>
+        <!--<h2>All About my Service</h2> -->
+        <p>It is the vision of LAVE-AUTO DE LUXE that the company will, through the diversified business lines it has developed, capture all the value chain of the convenience car wash market world-wide. In simple terms, if you want to wash your car then you will do so using either LAVE-AUTO DE LUXE products or services offered in parking lots or through its on-demand app.
+
+LAVE-AUTO DE LUXE is the first company to build a bespoke On-Demand in house app for carwashing and detailing, and has also proven its innovation in markets in Europe where it has been operating the On-Demand model since 2016 – LAVE-AUTO DE LUXE has a significant advantage in this market as it has developed this on the back of an already successful business operating in both the carwash & detailing markets but also manufacturing and supplying its range of waterless products globally.
+
+
+LAVE-AUTO DE LUXE’s vision is to be the ‘go to’ brand in the entire car care space. No other company has managed to do this to date in a market that suffers from fragmentation due to lack of technology advancement and poor product innovation.
+
+
+          The main purpose of improving car wash technology is to reduce friction and manual vehicle preparation
+          time, resulting in cleaner, drier vehicles in less time.</p>
+        <a href="#" class="cta">All About Our Service</a>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+
+
+
+<!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>L</span>uxury Car <span>W</span>ash</h1>
+      </div>
+      <h2>STUDENT_ID-X21139261-DEVOPS-PROJECT</h2>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/youtube-play.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/instagram-new--v2.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/100/000000/twitter.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/facebook-new.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/google-maps.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/whatsapp.png" alt=""/></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://img.icons8.com/bubbles/50/000000/linkedin.png" alt=""/></a>
+        </div>
+
+
+
+
+
+      </div>
+      <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved  By National College of Ireland </p>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

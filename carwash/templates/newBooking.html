@@ -1,0 +1,43 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="card shadow m-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 2px solid orange">New Booking</h5>
+     <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+
+		<table id="example" class="table table-striped table-bordered" style="width:100%">
+			<caption></caption>
+			<thead style="background-color: #9e9e9e">
+				<tr>
+					<th>S No.</th>
+					<th>Booking No.</th>
+					<th>Name</th>
+					<th>Package Type</th>
+					<th>Washing Point</th>
+					<th>Washing Date/Time</th>
+					<th>Posting Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+              {% for i in carwashbooking%}
+			  <tr>
+				  <td>{{forloop.counter}}</td>
+				  <td>{{i.bookingId}}</td>
+				  <td>{{i.fullName}}</td>
+				  <td>{{i.packageType}}</td>
+				  <td>{{i.carWashPoint}}</td>
+				  <td>{{i.washDate}}{{i.washTime}}</td>
+				  <td>{{i.postingDate}}</td>
+				  <td><a href="{% url 'view_BookingDtls' i.id %}" class="btn btn-primary">View</td>
+			  </tr>
+                {% endfor %}
+			</tbody>
+		</table>
+	</div>
+	</div>
+</div>
+
+{% endblock content %}

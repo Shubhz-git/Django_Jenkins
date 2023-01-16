@@ -1,0 +1,107 @@
+{% load static %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+{% if error == "no" %}
+     <script>
+	   alert('Your Message has been Send Successfully');
+	   window.location=('{% url 'contact' %}');
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endif %}
+
+<section style="background-image: url({% static 'images/contact.jpg' %}); background-size: cover; height: 700px;">
+ <div class="container py-5 mt-3">
+   <div class="card">
+     <div class="card-body">
+       <h1 class="font-weight-light text-center py-3">Contact Us</h1>
+       <div class="row">
+         <div class="col-lg-6 col-md-12 col-sm-12">
+
+          <div class="row pt-3">
+            <div class="col-lg-1 offset-1 col-md-2 col-sm-2">
+              <span style="font-size: 30px; color: cadetblue"><em class="fas fa-map-marker-alt"></em></span>
+            </div>
+
+             <div class="col-lg-10 col-md-9 col-sm-9">
+               <h3 class="font-weight-light">Find Us at the office</h3>
+               <p>232 - PARKWAY 3<br>
+                MILLRACE ROAD PHOENIX PARK RACECOURSE<br>
+                DUBLIN 15 D15 AE12
+               </p>
+            </div>
+          </div>
+
+          <div class="row pt-3">
+            <div class="col-lg-1 offset-1 col-md-2 col-sm-2">
+              <span style="font-size: 30px; color: coral"><em class="fas fa-phone-volume"></em></span>
+            </div>
+
+             <div class="col-lg-10 col-md-9 col-sm-9">
+               <h3 class="font-weight-light">Give Us a Ring</h3>
+               <p>Shubham Prashant Patil<br>
+                 +353 0892076791<br>
+                 DUBLIN
+               </p>
+            </div>
+          </div>
+
+         </div>
+
+         <div class="col-lg-6 col-md-12 col-sm-12">
+           <form method="post">
+               {% csrf_token %}
+             <div class="form-row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label>Full Name</label>
+                  <input type="text" name="FullName" class="form-control" placeholder="Enter Full Name" required>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label>Contact Number</label>
+                  <input type="text" name="Contact" class="form-control" placeholder="Contact Number" required maxlength="10">
+                </div>
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label>Email Id</label>
+                  <input type="email" name="EmailId" class="form-control" placeholder="Email ID" required>
+                </div>
+
+                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                  <label>Subject</label>
+                  <input type="text" name="Subject" class="form-control" placeholder="Enter Subject" required>
+                </div>
+
+                 <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                  <label>Message</label>
+                  <textarea name="Description" class="form-control" placeholder="Message....."></textarea>
+                </div>
+
+                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                   <input type="submit" value="Send" class="form-control btn btn-primary">
+                 </div>
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <a href="{% url 'index' %}" class="form-control btn btn-primary">Back to Home</a>
+                </div>
+
+             </div>
+           </form>
+         </div>
+       </div>
+
+     </div>
+   </div>
+ </div>
+</section>

@@ -1,0 +1,112 @@
+{% load static %}
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+{% if error == "no" %}
+     <script>
+	   alert('Your New booking are successfully');
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endif %}
+
+<section style="background-image: url({% static 'images/contact.jpg' %}); background-size: cover; height: 950px;">
+<div class="container card shadow py-5 mt-3">
+		<div class="card-body">
+			<h5 class="p-2" style="border-bottom: 2px solid orange">Customer Washing Booking</h5>
+             <br>
+			<div class="container-fluid">
+					<form method="post">
+                     {% csrf_token %}
+
+                     <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>Booking Service Type</label>
+                                <select name="packageType" required class="form-control">
+                                      <option value="">Booking Service Type</option>
+                                      <option value="ESSENTIAL CLEAN-UP (€80.59)">ESSENTIAL CLEAN-UP (€80.59)</option>
+                                      <option value="FULL INTERIOR CLEAN-UP (€150.54)">FULL INTERIOR CLEAN-UP (€150.54)</option>
+                                      <option value="DEEP COMPLEX CLEAN-UP(€210.49)">DEEP COMPLEX CLEAN-UP(€210.49)</option>
+                                </select>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>Washing Point</label>
+                                <select  name="carWashPoint"  class="form-control">
+                                  <option value="">---Select Washing Point---</option>
+								  {% for i in washingpoints %}
+                                  <option value="{{i.washingPointName}}">{{i.washingPointName}}</option>
+                                  {% endfor %}
+                                 </select>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>Customer Name</label>
+                                <input type="text" name="fullName" class="form-control" placeholder="Enter Customer Name" required>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Contact Number</label>
+                                <input type="text" name="mobileNumber" class="form-control" placeholder="Enter Contact Number" required maxlength="10">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Wash Date</label>
+                                <input type="date" name="washDate" class="form-control">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Wash Time</label>
+                                <input type="time" name="washTime" class="form-control">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Message (if any)</label>
+								<textarea name="message" class="form-control" placeholder="Enter Any Message..." required></textarea>
+							</div>
+						</div>
+					 </div>
+    	             <hr>
+						<input type="submit" value="Submit" class="btn btn-primary">
+						<a href="{% url 'index' %}" class="btn btn-primary">Back to Home</a>
+					</form>
+				</div>
+			</div>
+		</div>
+</section>
+

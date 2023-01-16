@@ -1,0 +1,103 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+{% if error == "no" %}
+     <script>
+	   alert('Your New booking are successfully');
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endif %}
+
+<div class="container card shadow mt-5">
+		<div class="card-body">
+			<h5 class="p-2" style="border-bottom: 2px solid orange">Add Car Washing Booking</h5>
+             <br>
+			<div class="container-fluid">
+					<form method="post">
+                     {% csrf_token %}
+
+                     <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>Booking Service Type</label>
+                                <select name="packageType" required class="form-control">
+                                      <option value="">Booking Service Type</option>
+                                      <option value="ESSENTIAL CLEAN-UP (€80.59)">ESSENTIAL CLEAN-UP (€80.59)</option>
+                                      <option value="FULL INTERIOR CLEAN-UP (€150.54)">FULL INTERIOR CLEAN-UP (€150.54)</option>
+                                      <option value="DEEP COMPLEX CLEAN-UP(€210.49)">DEEP COMPLEX CLEAN-UP(€210.49)</option>
+                                </select>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>Washing Point</label>
+                                <select  name="carWashPoint"  class="form-control">
+                                  <option value="">---Select Washing Point---</option>
+								  {% for i in washingpoints %}
+                                  <option value="{{i.washingPointName}}">{{i.washingPointName}}</option>
+                                  {% endfor %}
+                                 </select>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label>FullName</label>
+                                <input type="text" name="fullName" class="form-control" placeholder="Enter Full Name" required>
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Contact Number</label>
+                                <input type="text" name="mobileNumber" class="form-control" placeholder="Enter Contact Number" required maxlength="10">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Wash Date</label>
+                                <input type="date" name="washDate" class="form-control">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Wash Time</label>
+                                <input type="time" name="washTime" class="form-control">
+							</div>
+						</div>
+					 </div>
+
+					 <div class="row">
+                        <div class="col-sm-12">
+							<div class="form-group">
+								<label>Message (if any)</label>
+								<textarea name="message" class="form-control" placeholder="Enter Any Message..." required></textarea>
+							</div>
+						</div>
+					 </div>
+    	             <hr>
+						<input type="submit" value="Submit" class="btn btn-primary">
+					</form>
+				</div>
+			</div>
+		</div>
+
+{% endblock content %}

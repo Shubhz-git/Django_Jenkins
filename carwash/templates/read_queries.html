@@ -1,0 +1,37 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="card shadow m-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 2px solid orange">Read Queries</h5>
+     <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+
+		<table id="example" class="table table-striped table-bordered" style="width:100%">
+		    <caption></caption>
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Name</th>
+                                        <th>Email ID</th>
+                                        <th>Contact Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                {% for i in enquiry %}
+                                <tbody>
+                                    <tr>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{i.FullName}}</td>
+                                        <td>{{i.EmailId}}</td>
+                                        <td>{{i.Contact}}</td>
+										<td><a href="{% url 'view_queries' i.id %}" class="text-primary">View Details</a></td>
+                                    </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+	</div>
+	</div>
+</div>
+
+{% endblock content %}

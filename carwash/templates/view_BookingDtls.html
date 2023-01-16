@@ -1,0 +1,136 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+
+<div class="card shadow m-5">
+    <div class="card-body">
+		<h5 class="p-2" style="border-bottom: 2px solid orange">Booking Details</h5>
+     <div class="container mt-5">
+		<h1 class="text-success text-center"></h1>
+
+		<table class="table table-bordered">
+		 <caption></caption>
+
+                               <tr>
+                                   <td colspan="4" style="font-size : 20px; color : blue">Booking Details</td>
+                               </tr>
+
+                                <tr>
+                                   <th scope="col">Booking ID</th>
+                                   <td>{{carwashbooking.bookingId}}</td>
+
+                                    <th scope="col">Posting Date</th>
+                                   <td>{{carwashbooking.postingDate}}</td>
+                                </tr>
+
+                                <tr>
+                                   <th scope="col">Full Name</th>
+                                   <td>{{carwashbooking.fullName}}</td>
+
+                                    <th scope="col">Mobile Number</th>
+                                   <td>{{carwashbooking.mobileNumber}}</td>
+                                </tr>
+
+                                <tr>
+                                   <th scope="col">Package Type</th>
+                                   <td>{{carwashbooking.packageType}}</td>
+
+                                    <th scope="col">Washing Point</th>
+                                   <td>{{carwashbooking.carWashPoint}}</td>
+                                </tr>
+
+                                <tr>
+                                   <th scope="col">Washing Date</th>
+                                   <td>{{carwashbooking.washDate}}</td>
+
+                                    <th scope="col">Washing Time</th>
+                                   <td>{{carwashbooking.washTime}}</td>
+                                </tr>
+
+                                <tr>
+                                   <th scope="col">Message</th>
+                                   <td>{{carwashbooking.message}}</td>
+
+                                    <th scope="col">Status</th>
+                                   <td>{{carwashbooking.status}}</td>
+                                </tr>
+
+
+                                {% if not carwashbooking.adminRemark %}
+                                 <tr>
+		                            <td colspan="4">
+	                                   <center><button data-toggle="modal" data-target="#myModal" class="btn-primary btn">Take Action</button></center>
+                                    </td>
+                                 </tr>
+                                {% else %}
+
+                                 <tr>
+	                               <td colspan="4" style="color: green; font-size:22px; text-align:center; font-weight:bold;">Admin Details</td>
+                                 </tr>
+
+                                 <tr>
+	                               <th scope="col">Transaction Type</th>
+	                                  <td>{{carwashbooking.paymentMode}}</td>
+		                              <th scope="col">Transaction No.(if any)</th>
+	                                  <td>{{carwashbooking.txnNumber}}</td>
+                                 </tr>
+
+                                 <tr>
+	                               <th scope="col">Admin Remark</th>
+	                               <td colspan="3">{{carwashbooking.adminRemark}}</td>
+                                 </tr>
+                                {% endif %}
+
+        </table>
+	    </div>
+	 </div>
+    </div>
+
+<!--Model-->
+ <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title text-success">Update Booking : {{carwashbooking.bookingId}}</h4>
+        </div>
+        <div class="modal-body">
+        <form method="post">
+            {% csrf_token %}
+          <p>
+            <select name="paymentMode" required class="form-control">
+                <option value="">Transaction Type</option>
+                <option value="e-Wallet">e-Wallet</option>
+                 <option value="UPI">UPI</option>
+                  <option value="Debit/Credit Card">Debit/Credit Card</option>
+                   <option value="Cash">Cash</option>
+                    <option value="Other">Other</option>
+              </select>
+
+            <p><input type="text" name="txnNumber" class="form-control" placeholder="Transaction Number (if any)"></p>
+
+             <p><textarea name="adminRemark"  class="form-control" placeholder="Admin Remark" required></textarea></p>
+             <p><input type="submit" class="btn btn-primary" name="Update" value="Update"></p>
+      </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% if error == "no" %}
+<script>
+	alert('Your Booking has been Updated');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+	alert('Invalid Login Credentials, Try Again');
+</script>
+{% endif %}
+
+{% endblock content %}
